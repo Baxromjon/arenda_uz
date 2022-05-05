@@ -1,0 +1,17 @@
+.body{
+    display: block;
+    background-color: white;
+}
+.card{
+    display: block;
+    position: absolute;
+    float: left;
+    cursor: pointer;
+    background-color: #f7fef8;
+}
+.card-1{
+    display: block;
+}
+.cursor{
+    cursor: pointer;
+}

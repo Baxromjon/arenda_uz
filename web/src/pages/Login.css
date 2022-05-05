@@ -1,0 +1,24 @@
+body{
+    background-color: #baefe7;
+    margin-top:20px;
+}
+.card {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+    background-color: #f5d4cc;
+}
+
+.card-1 {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 600px;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #789ff8;
+    border-radius: .2rem;
+}
