@@ -60,6 +60,7 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
             "from orders o\n" +
             "         inner join users_orders uo on o.id = uo.order_id\n" +
             "         inner join users u on u.id = uo.user_id\n" +
+            "where u.enabled = true\n" +
             "group by u.first_name, cast(u.id as varchar), u.last_name, u.phone_number\n" +
             "having extract('day' from current_date - max(o.created_at)) > 30")
     List<UsersOrderProjection> getOrdersMoreDay();

@@ -1,6 +1,7 @@
 package io.fl.water_delivery.repository;
 
 import io.fl.water_delivery.entity.ResidueProduct;
+import io.fl.water_delivery.payload.ApiResponce;
 import io.fl.water_delivery.projection.ResidueProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +19,12 @@ public interface ResidueProductRepository extends JpaRepository<ResidueProduct, 
     List<ResidueProjection> getAllByUserId(UUID userId);
 
     Optional<ResidueProduct> getAllByUserIdAndProductId(UUID user_id, UUID product_id);
+
+    @Query(nativeQuery = true, value = "delete from residue_product\n" +
+            "where user_id=:uuid")
+    void deleteResidueByUserId(UUID uuid);
+
+    @Query(nativeQuery = true, value = "delete from users_orders\n" +
+            "where user_id=:uuid")
+    void deleteUserOrderByUerId(UUID uuid);
 }

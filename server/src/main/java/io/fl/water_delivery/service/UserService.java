@@ -4,6 +4,7 @@ import io.fl.water_delivery.entity.User;
 import io.fl.water_delivery.entity.enums.RoleName;
 import io.fl.water_delivery.payload.*;
 import io.fl.water_delivery.projection.UserProjection;
+import io.fl.water_delivery.repository.ResidueProductRepository;
 import io.fl.water_delivery.repository.RoleRepository;
 import io.fl.water_delivery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class UserService {
     RoleRepository roleRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    ResidueProductRepository residueProductRepository;
 
     public ResPagination getAllUsers(String search, int page, int size) {
         long count = userRepository.getCountUser();
@@ -70,16 +73,19 @@ public class UserService {
     }
 
     public ApiResponce delete(UUID id) {
-        try {
-            Optional<User> optional = userRepository.findById(id);
-            User user = optional.get();
-            user.setEnabled(false);
-            userRepository.save(user);
+//        try {
+//            residueProductRepository.deleteResidueByUserId(id);
+//            residueProductRepository.deleteUserOrderByUerId(id);
+            userRepository.deleteById(id);
+//            Optional<User> optional = userRepository.findById(id);
+//            User user = optional.get();
+//            user.setEnabled(false);
+//            userRepository.save(user);
             return new ApiResponce(true, "successfully deleted");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new ApiResponce(false, "Error in delete");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return new ApiResponce(false, "Error in delete");
     }
 
     public ApiResponce editAdmin(User user, AdminDTO adminDTO) {

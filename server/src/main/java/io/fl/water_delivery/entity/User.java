@@ -28,8 +28,6 @@ public class User extends AbsEntity implements UserDetails {
     private String lastName;
     private String phoneNumber;
     private String password;
-//    @ManyToOne()
-//    private Residue residue;//qoldiq, klientda nechta suv idish qolgan
     private String address;
     private String street;
     private String home;
